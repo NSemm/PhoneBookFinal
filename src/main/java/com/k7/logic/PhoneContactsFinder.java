@@ -15,10 +15,11 @@ public class PhoneContactsFinder implements ContactsFinder {
     @Override
     public Set<ContactName> searchContact(String text) {
         Set<ContactName> findContacts = new HashSet<>();
-        for (Phone p: contacts
-             ) {String phone = p.getPhoneNumber();
-             if (phone.indexOf(text) != -1)
-            findContacts.add(new ContactName(p.getContactName()));
+        for (Phone p : contacts
+        ) {
+            String phone = p.getPhoneNumber();
+            if (phone.indexOf(text) != -1)
+                findContacts.add(new ContactName(p.getContactName()));
         }
         return findContacts;
     }

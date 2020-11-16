@@ -4,7 +4,6 @@ import com.k7.dao.*;
 import com.k7.entities.ContactName;
 import com.k7.entities.Phone;
 
-import java.util.Iterator;
 
 public class PhoneBookControl {
     ContactNamesDao names = new ArrayContactNamesDao();
@@ -46,45 +45,52 @@ public class PhoneBookControl {
     }
 
     public void createContact(String name, String phone, String type) {
-        int flag = 0;
-        for (ContactName c : names.getAll()
-        ) {
-            if (c.getName().equals(name)) flag = 1;
-
-        }
-        if (flag != 0) System.out.println("Contact already exist");
+        if (name.trim().equals("")) System.out.println("Contact name mast be declared");
         else {
-            names.add(name);
-            phones.addPhones(name, phone, type);
-            System.out.println("Contact added");
-        }
-    }
-
-    public void deleteContact(String name) {
-        int flag = 0;
-        ContactName temp = new ContactName("");
-        for (ContactName c : names.getAll()
-        ) {
-            if (c.getName().equals(name)) flag = 1;
-        }
-        if (flag == 0) System.out.println("Contact not found");
-        else {
-            for (ContactName n : names.getAll()
+            int flag = 0;
+            for (ContactName c : names.getAll()
             ) {
-                if (n.getName().equals(name))
-                    temp = n;
+                if (c.getName().equals(name)) flag = 1;
+
             }
-            names.del(temp);
-            Iterator<Phone> iter = phones.getAllPhones().iterator();
-            while (iter.hasNext()) {
-                Phone p = iter.next();
-                if (p.getContactName().equals(name))
-                    iter.remove();
+            if (flag != 0) System.out.println("Contact already exist");
+            else {
+                names.add(name);
+                phones.addPhones(name, phone, type);
+                System.out.println("Contact added");
             }
-            System.out.println("Contact deleted");
         }
     }
-    public void deletePhoneFromContact(String phone){
+
+    public void deleteContactByName(String name) {
+        DeleteContact delContactMethod = new ByNameDeleteContact(names, phones);
+        if (delContactMethod.deleteContact(name) == 1) {
+            delContactMethod.deletePhone(name);
+
+        }
+    }
+
+    public void deleteContactByPhone(String phone) {
+        String name = "";
+        int count = 0;
+        for (Phone p : phones.getAllPhones()
+        ) {
+            if (p.getPhoneNumber().equals(phone))
+                name = p.getContactName();
+        }
+        for (Phone p : phones.getAllPhones()
+        ) {
+            if (p.getContactName().equals(name)) ++count;
+        }
+        if (count > 1) {
+            DeleteContact delContactMethod = new ByPhoneDeleteContact(names, phones);
+            delContactMethod.deletePhone(phone);
+        } else {
+            DeleteContact delContactMethod = new ByNameDeleteContact(names, phones);
+            if (delContactMethod.deleteContact(name) == 1)
+                delContactMethod.deletePhone(name);
+
+        }
 
     }
 

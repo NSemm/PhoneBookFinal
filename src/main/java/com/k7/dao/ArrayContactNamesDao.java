@@ -8,7 +8,7 @@ import java.util.Set;
 public class ArrayContactNamesDao implements ContactNamesDao {
     Set<ContactName> contactNames = new HashSet<>();
     @Override
-    public void addInArray (){
+    public void addInArray(){
         contactNames.add(new ContactName("Vasya"));
         contactNames.add(new ContactName("Petia"));
         contactNames.add(new ContactName("Alex"));

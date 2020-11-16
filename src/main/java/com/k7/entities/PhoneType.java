@@ -8,4 +8,4 @@ import lombok.Data;
 public class PhoneType {
     private int typeId;
     private String type;
-   }
+}

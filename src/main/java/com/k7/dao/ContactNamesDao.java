@@ -5,8 +5,11 @@ import com.k7.entities.ContactName;
 import java.util.Set;
 
 public interface ContactNamesDao {
-    void addInArray ();
+    void addInArray();
+
     Set<ContactName> getAll();
+
     void add(String name);
+
     void del(ContactName contact);
 }

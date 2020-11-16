@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface PhoneTypeDao {
     void addTypeInArray();
+
     List<PhoneType> getAllTypes();
 }

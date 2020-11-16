@@ -1,6 +1,5 @@
 package com.k7.dao;
 
-import com.k7.entities.ContactName;
 import com.k7.entities.Phone;
 
 import java.util.ArrayList;
@@ -20,6 +19,7 @@ public class ArrayPhoneDao implements PhoneDao {
         phones.add(new Phone("Leo", "6548899", "home"));
         phones.add(new Phone("Vova", "6548123213", "home"));
         phones.add(new Phone("Valya", "6548123213", "mobile"));
+        phones.add(new Phone("Valya", "222333", "home"));
 
 
     }
