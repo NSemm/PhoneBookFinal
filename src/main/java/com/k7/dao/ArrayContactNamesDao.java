@@ -7,12 +7,15 @@ import java.util.Set;
 
 public class ArrayContactNamesDao implements ContactNamesDao {
     Set<ContactName> contactNames = new HashSet<>();
+    @Override
     public void addInArray (){
         contactNames.add(new ContactName("Vasya"));
         contactNames.add(new ContactName("Petia"));
         contactNames.add(new ContactName("Alex"));
         contactNames.add(new ContactName("Max"));
         contactNames.add(new ContactName("Leo"));
+        contactNames.add(new ContactName("Valya"));
+        contactNames.add(new ContactName("Vova"));
     }
 
     @Override

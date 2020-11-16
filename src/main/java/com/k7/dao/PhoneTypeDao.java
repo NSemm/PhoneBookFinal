@@ -6,5 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface PhoneTypeDao {
-    List<PhoneType> getAll();
+    void addTypeInArray();
+    List<PhoneType> getAllTypes();
 }
