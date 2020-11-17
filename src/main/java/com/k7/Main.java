@@ -11,7 +11,7 @@ public class Main {
         bookControl.showContacts();
         //bookControl.searchContactByName("Va");
         //bookControl.searchContactByPhone("11");
-        //bookControl.createContact("Maxa","0633213131","fax");
+        //bookControl.createContact("Maxa","0633213131","axf");
         //bookControl.addPhoneToContact("Max","0633213131","fax");
         //bookControl.deleteContactByName("Alex");
         //bookControl.deleteContactByPhone("+380748768111");
